@@ -9,7 +9,7 @@ app = Flask(__name__)
 def connect_to_db():
     try:
         conn = mysql.connector.connect(
-            host=os.getenv("DB_HOST", "54.159.50.170"),  # IP pública de la instancia EC2
+            host=os.getenv("DB_HOST", "54.221.27.193"),  # IP pública de la instancia EC2
             database=os.getenv("DB_NAME", "CustomerCreateDb"),  # Nombre de tu base de datos
             user=os.getenv("DB_USER", "restaurant"),  # Usuario de la base de datos
             password=os.getenv("DB_PASSWORD", "restaurant123")  # Contraseña de la base de datos
