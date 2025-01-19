@@ -9,10 +9,10 @@ app = Flask(__name__)
 def connect_to_db():
     try:
         conn = mysql.connector.connect(
-            host="54.82.123.235",  # IP pública de la instancia EC2
-            database="customerDb",  # Nombre de tu base de datos 
-            user="root",  # Usuario de la base de datos
-            password="Pandaniela@0919"  # Contraseña de la base de datos 
+            host="54.159.50.170",  # IP pública de la instancia EC2
+            database="CustomerCreateDb",  # Nombre de tu base de datos 
+            user="restaurant",  # Usuario de la base de datos
+            password="restaurant123"  # Contraseña de la base de datos 
         )
         if conn.is_connected():
             return conn
