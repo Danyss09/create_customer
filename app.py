@@ -9,16 +9,17 @@ app = Flask(__name__)
 def connect_to_db():
     try:
         conn = mysql.connector.connect(
-            host="54.82.123.235",  # Reemplaza con la IP pública de tu instancia EC2
-            database=os.getenv("DB_CREATE_DATABASE"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD")
+            host="54.82.123.235",  # IP pública de la instancia EC2
+            database="customerDb",  # Nombre de tu base de datos 
+            user="root",  # Usuario de la base de datos
+            password="Pandaniela@0919"  # Contraseña de la base de datos 
         )
         if conn.is_connected():
             return conn
     except Error as e:
         print(f"Error al conectar a MySQL: {e}")
         return None
+
 
 # Endpoint para registrar un cliente
 @app.route('/customer', methods=['POST'])
