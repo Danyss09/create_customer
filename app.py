@@ -1,18 +1,17 @@
 from flask import Flask, request, jsonify
 import mysql.connector
 from mysql.connector import Error
-import os
 
 app = Flask(__name__)
 
-# Conexión a la base de datos MySQL usando variables de entorno
+# Conexión a la base de datos MySQL
 def connect_to_db():
     try:
         conn = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            database=os.getenv("DB_CREATE_DATABASE"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD")
+            host="localhost",
+            database="CustomerCreateDb",
+            user="root",  # Cambia esto si usas otro usuario
+            password="pandani09"  # Cambia esto por la contraseña que has configurado
         )
         if conn.is_connected():
             return conn
