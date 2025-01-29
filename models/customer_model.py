@@ -1,5 +1,5 @@
 from services.db_config import get_connection
-
+import pymysql
 def create_customer(first_name, last_name, email, phone_number, address):
     connection = get_connection()
     try:
@@ -19,17 +19,3 @@ def create_customer(first_name, last_name, email, phone_number, address):
         return {"error": str(e)}
     finally:
         connection.close()
-
-def get_all_customers():
-    connection = get_connection()
-    try:
-        with connection.cursor() as cursor:
-            query = "SELECT * FROM Customers"
-            cursor.execute(query)
-            customers = cursor.fetchall()
-            return customers
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        connection.close()
-        
