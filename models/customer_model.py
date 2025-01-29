@@ -10,7 +10,11 @@ def create_customer(first_name, last_name, email, phone_number, address):
             """
             cursor.execute(query, (first_name, last_name, email, phone_number, address))
             connection.commit()
-            return {"message": "Customer created successfully!"}
+            
+            # Obtener el ID del cliente recién creado
+            customer_id = cursor.lastrowid
+
+            return {"message": "Customer created successfully!", "CustomerID": customer_id}
     except Exception as e:
         return {"error": str(e)}
     finally:
@@ -28,3 +32,4 @@ def get_all_customers():
         return {"error": str(e)}
     finally:
         connection.close()
+        
