@@ -9,6 +9,7 @@ def create_customer_route():
     is_valid, message = validate_customer_data(data)
     if not is_valid:
         return jsonify({"error": message}), 400
+
     response = create_customer(
         data['FirstName'],
         data['LastName'],
@@ -16,7 +17,9 @@ def create_customer_route():
         data['PhoneNumber'],
         data['Address']
     )
+
     return jsonify(response)
+
 #  Route to get all customers
 @customer_bp.route('/get_customers', methods=['GET'])
 def get_customers_route():
@@ -24,3 +27,4 @@ def get_customers_route():
     if "error" in response:
         return jsonify({"error": response["error"]}), 500
     return jsonify({"customers": response})
+    
